@@ -1,0 +1,12 @@
+fightchurn_dbt:
+  target: prd
+  outputs:
+    prd:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: ""
+      port: 5432
+      dbname: churn
+      schema: socialnet7
+      threads: 4

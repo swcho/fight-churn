@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: churn
+    schema: socialnet7
+    tables:
+      - name: subscription
+        description: 구독 정보
+        columns:
+          - name: subscription_id
+            description: A unique identifier for each subscription.
+          - name: account_id
+            description: |
+              An identifier for the account holder or user.
+              계정별로 유일한 값이지만 가입자 정보 테이블에서는 유일하지 않습니다.
+              일반적으로 하나의 계정은 여러 복수의 구독을 할 수 있습니다.
+          - name: product_id
+            description: |
+              An identifier for the unique product that is subscribed to.
+              구독은 하나의 제품만 가능합니다.
+          - name: start_date
+            description: |
+              Every subscription must start on some date.
+              모든 구독은 시작 시간이 있습니다.
+          - name: end_date
+            description: |
+              Subscriptions may or may not have end dates.
+              구독이 종료하거나 취소할 경우 값을 가집니다.
+          - name: mrr
+            description: |
+              Paid subscriptions have an associated amount of recurring monthly revenue.
