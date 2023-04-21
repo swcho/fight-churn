@@ -25,6 +25,7 @@ start_accounts AS (
     account_id
 ),
 end_accounts AS (
+  -- 끝나는 시점에 구동중인 계정과 그 mrr
   SELECT
     account_id,
     SUM(mrr) AS total_mrr
@@ -44,6 +45,7 @@ end_accounts AS (
     account_id
 ),
 retained_accounts AS (
+  -- 시작과 끝 시점의 사용자들을 join 하여 retention 목록 생성
   SELECT
     s.account_id,
     SUM(
@@ -57,6 +59,7 @@ retained_accounts AS (
     s.account_id
 ),
 start_mrr AS (
+  -- 시작 시점의 mrr 합산
   SELECT
     SUM(
       start_accounts.total_mrr
@@ -65,6 +68,7 @@ start_mrr AS (
     start_accounts
 ),
 retain_mrr AS (
+  -- retention mrr 합산
   SELECT
     SUM(
       retained_accounts.total_mrr
