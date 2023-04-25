@@ -1,5 +1,29 @@
 {
-	"cSpell.words": [
-		"fightchurn"
-	]
+  "cSpell.words": [
+    "downsell",
+    "fightchurn"
+  ],
+  "sqltools.connections": [
+    {
+      "connectionTimeout": 30,
+      "database": "mysql",
+      "name": "swtest",
+      "password": "y6RBbXI8Mt",
+      "port": 3306,
+      "server": "mysql-default.swtest.svc.ai2.io.navercorp.com",
+      "username": "root",
+      "driver": "MySQL"
+    },
+    {
+      "name": "local-pg",
+      "driver": "PostgreSQL",
+      "previewLimit": 50,
+      "connectString": "postgresql://postgres:@localhost:5432/churn?searchpath=socialnet7",
+      // "server": "localhost",
+      // "port": 5432,
+      // "database": "churn",
+      // "username": "postgres",
+      // "password": ""
+    }
+  ]
 }

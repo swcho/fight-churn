@@ -29,3 +29,12 @@ sources:
           - name: mrr
             description: |
               Paid subscriptions have an associated amount of recurring monthly revenue.
+      - name: event
+        description: 사용자 이벤트 목록
+        columns:
+          - name: account_id
+            description: 계정 ID
+          - name: event_time
+            description: 이벤트 발생 시간
+          - name: event_type_id
+            description: 이벤트 타입
