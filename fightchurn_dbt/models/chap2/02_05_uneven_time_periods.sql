@@ -36,13 +36,23 @@ with
     churn_count as (
         -- churned 사용자 수
         select count(*) as n_churn from churned_accounts
+    ),
+    magic_numbers as (
+        select
+            end_date - start_date as duration,
+            -- churn 사용자 수 / 시작일 사용자 수 = churn rate --
+            n_churn::float / n_start::float as churn_rate
+        from start_count, churn_count, date_range
     )
 select
-    -- churn 사용자 수 / 시작일 사용자 수 = churn rate
-    n_churn::float / n_start::float as churn_rate,
-    -- 1 - churn 사용자 수 / 시작일 사용자 수 = retention rate
-    1.0 - n_churn::float / n_start::float as retention_rate,
     n_start,
-    n_churn
-from start_count, churn_count
-  churn_count
+    n_churn,
+    churn_rate as measured_churn,
+    -- 시작날짜와 끝날짜의 차이, 즉 분석 대상 기간
+    duration as period_days,
+    -- eq 2.18
+    1.0 - power(1.0 - churn_rate, 365.0 / duration::float) as annual_churn,
+    -- eq 2.19
+    1.0 - power(1.0 - churn_rate, (365.0 / 12.0) / duration::float) as monthly_churn
+from start_count, churn_count, date_range, magic_numbers
+  magic_numbers

@@ -25,5 +25,12 @@
       // "username": "postgres",
       // "password": ""
     }
-  ]
+  ],
+  "files.associations": {
+    "*.sql": "jinja-sql"
+  },
+  "[jinja-sql]": {
+    "editor.defaultFormatter": "innoverio.vscode-dbt-power-user"
+  },
+  "python.terminal.activateEnvInCurrentTerminal": true,
 }
