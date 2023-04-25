@@ -6,7 +6,7 @@ with
     start_accounts as (
         -- 시작일 구독자
         select distinct account_id
-        from {{source('churn', 'subscription')}} s
+        from {{ source('churn', 'subscription') }} s
         inner join
             date_range d
             on s.start_date <= d.start_date
@@ -15,7 +15,7 @@ with
     end_accounts as (
         -- 끝일 구독자
         select distinct account_id
-        from {{source('churn', 'subscription')}} s
+        from {{ source('churn', 'subscription') }} s
         inner join
             date_range d
             on s.start_date <= d.end_date
@@ -55,4 +55,3 @@ select
     -- eq 2.19
     1.0 - power(1.0 - churn_rate, (365.0 / 12.0) / duration::float) as monthly_churn
 from start_count, churn_count, date_range, magic_numbers
-  magic_numbers

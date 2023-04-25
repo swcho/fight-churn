@@ -48,7 +48,6 @@ with
 select
     n_churn::float / n_start::float as churn_rate,
     1.0 - n_churn::float / n_start::float as retention_rate,
-    1.0 - n_churn::float / n_start::float as retention_rate,
     n_start,
     n_churn
 from start_count, end_count, churn_count churn_count
