@@ -33,4 +33,5 @@
     "editor.defaultFormatter": "innoverio.vscode-dbt-power-user"
   },
   "python.terminal.activateEnvInCurrentTerminal": true,
+  "dbt.queryLimit": 500,
 }
