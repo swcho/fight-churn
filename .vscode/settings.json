@@ -34,4 +34,5 @@
   },
   "python.terminal.activateEnvInCurrentTerminal": true,
   "dbt.queryLimit": 500,
+  "editor.formatOnSave": false
 }
