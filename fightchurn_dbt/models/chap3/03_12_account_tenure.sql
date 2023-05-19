@@ -1,5 +1,5 @@
 with recursive
-    date_range as (select '2020-07-01'::date as calc_date),
+    date_range as (select '2020-05-01'::date as calc_date),
     earlier_starts as (
         select s.account_id, min(s.start_date) as start_date
         from subscription s
